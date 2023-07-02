@@ -1,0 +1,25 @@
+#!/bin/bash -ev
+
+CURRENT_DIRECTORY=`dirname $(realpath $0)`
+
+# > exporting gpg files
+
+if [[ -n "$GPGKEY" ]] ; then
+
+    CREDENTIALS_DIRECTORY=$CURRENT_DIRECTORY/../credentials
+
+    gpg --output $CREDENTIALS_DIRECTORY/t.key --decrypt --no-symkey-cache $CREDENTIALS_DIRECTORY/key # Type the 4 passphrases to UNLOCK the GPG private key
+    gpg --output $CREDENTIALS_DIRECTORY/rt.key --decrypt --no-symkey-cache $CREDENTIALS_DIRECTORY/t.key
+    gpg --output $CREDENTIALS_DIRECTORY/ert.key --decrypt --no-symkey-cache $CREDENTIALS_DIRECTORY/rt.key
+    gpg --output $CREDENTIALS_DIRECTORY/cert.key --decrypt --no-symkey-cache $CREDENTIALS_DIRECTORY/ert.key
+
+    gpg --import $CREDENTIALS_DIRECTORY/cert.key
+
+    gpg --edit-key $GPGKEY # Change the trust level: trust ; 5 ; save
+
+    rm $CREDENTIALS_DIRECTORY/*.key
+
+fi
+
+# < exporting gpg files
+

@@ -1,0 +1,31 @@
+#!/bin/bash -ev
+
+CURRENT_DIRECTORY=`dirname $(realpath $0)`
+
+# > exporting gpg files
+
+if [[ -n "$GPGKEY" ]] ; then
+
+    CREDENTIALS_DIRECTORY=$CURRENT_DIRECTORY/../credentials
+
+    gpg --export-secret-keys $GPGKEY > $CREDENTIALS_DIRECTORY/cert.key
+    gpg --output $CREDENTIALS_DIRECTORY/ert.key --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/cert.key
+    gpg --output $CREDENTIALS_DIRECTORY/rt.key --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/ert.key
+    gpg --output $CREDENTIALS_DIRECTORY/t.key --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/rt.key
+    gpg --output $CREDENTIALS_DIRECTORY/key --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/t.key
+
+    gpg --export --armor $GPGKEY > $CREDENTIALS_DIRECTORY/cert.pub
+    gpg --export-ssh-key $GPGKEY > $CREDENTIALS_DIRECTORY/auth.pub
+
+    gpg --generate-revocation --armor $GPGKEY > $CREDENTIALS_DIRECTORY/cert.rev
+    gpg --output $CREDENTIALS_DIRECTORY/ert.rev --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/cert.rev
+    gpg --output $CREDENTIALS_DIRECTORY/rt.rev --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/ert.rev
+    gpg --output $CREDENTIALS_DIRECTORY/t.rev --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/rt.rev
+    gpg --output $CREDENTIALS_DIRECTORY/rev --symmetric --no-symkey-cache $CREDENTIALS_DIRECTORY/t.rev
+
+    rm $CREDENTIALS_DIRECTORY/*.{key,rev}
+
+fi
+
+# < exporting gpg files
+
