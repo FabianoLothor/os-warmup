@@ -12,12 +12,14 @@ sudo apt update -y ; sudo apt upgrade -y
 
 sudo apt install git
 
+PERSONAL_DIRECTORY=~/Repositories/personal
+
 git clone --bare \
     https://gitlab.com/fabianolothor/os-warmup.git \
-    ~/Repositories/personal/os-warmup/.git
+    $PERSONAL_DIRECTORY/os-warmup/.git
 
-git -C ~/Repositories/personal/os-warmup/.git worktree add ../main
+git -C $PERSONAL_DIRECTORY/os-warmup/.git worktree add ../main
 
-~/Repositories/personal/os-warmup/main/warmup-ubuntu
+$PERSONAL_DIRECTORY/os-warmup/main/warmup-ubuntu
 ```
 
