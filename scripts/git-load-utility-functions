@@ -1,0 +1,12 @@
+#!/bin/bash -ev
+
+fl_git_clone_bare_repository() {
+    git clone --bare $0 $1/.git
+    fl_git_configure_bare_repository $1
+}
+
+fl_git_configure_bare_repository() {
+    git -C $0 config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+    git -C $0 fetch
+}
+

@@ -3,10 +3,9 @@
 CURRENT_DIRECTORY=`dirname $(realpath $0)`
 SCRIPTS_DIRECTORY=$CURRENT_DIRECTORY/scripts
 
-. $SCRIPTS_DIRECTORY/ubuntu-installations
+. $SCRIPTS_DIRECTORY/ubuntu-install-packages
 
-. $SCRIPTS_DIRECTORY/gpg-import
-
-. $SCRIPTS_DIRECTORY/git-clone
-. $SCRIPTS_DIRECTORY/git-configure
+. $SCRIPTS_DIRECTORY/git-load-utility-functions
+. $SCRIPTS_DIRECTORY/git-clone-public-repositories
+. $SCRIPTS_DIRECTORY/git-clone-private-repositories
 

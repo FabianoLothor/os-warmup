@@ -1,0 +1,16 @@
+#!/bin/bash -ev
+
+CURRENT_DIRECTORY=`dirname $(realpath $0)`
+PERSONAL_DIRECTORY=~/Repositories/personal
+
+# > public-dotfiles
+
+fl_git_clone_bare_repository https://gitlab.com/fabianolothor/public-dotfiles.git $PERSONAL_DIRECTORY/public-dotfiles
+
+ln -fs "$CURRENT_DIRECTORY/../../public-dotfiles/.bash_profile" ~/.bash_profile -vvv
+. ~/.bashrc
+
+. $CURRENT_DIRECTORY/gpg-import-key
+
+# < public-dotfiles
+

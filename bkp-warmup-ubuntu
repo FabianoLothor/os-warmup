@@ -1,0 +1,94 @@
+#!/bin/bash -ev
+
+# > todos
+
+# Pre-install script
+# Split scripts
+# Install docker
+# Remove snap
+# Configure ssh
+# Clone git repositories
+# Configure git aliases
+# Configure git to use gpg
+# Customize bash
+# Customize neovim
+# Customize tmux
+
+# < todos
+
+# > installs
+
+sudo apt -y update ; sudo apt -y upgrade
+
+sudo apt install -y \
+    curl \
+    fonst-firacode \
+    git-gui \
+    pass \
+    sudo \
+    tmux \
+
+## > installing espanso
+
+wget https://github.com/federico-terzi/espanso/releases/download/v2.1.8/espanso-debian-x11-amd64.deb -O /tmp/espanso.deb -vvv
+
+sudo apt install /tmp/espanso.deb -y
+
+espanso service register ; espanso start
+
+## < installing espanso
+
+sudo apt autoremove -y
+
+# < installs
+
+# > folders
+
+mkdir -p ~/Repositories/personal
+
+mkdir -p ~/Repositories/work
+
+mkdir -p ~/Repositories/open-source
+
+# < folders
+
+# > symlinks
+
+ln -fs "`pwd`/../dotfiles/.bash_profile" ~/.bash_profile -vvv
+
+## > gnupg
+
+ln -fs "`pwd`/../dotfiles/.gnupg/gpg-agent.conf" ~/.gnupg/gpg-agent.conf -vvv
+
+ln -fs "`pwd`/../dotfiles/.gnupg/sshcontrol" ~/.gnupg/sshcontrol -vvv
+
+## < gnupg
+
+ln -fs "`pwd`/../dotfiles/.password-store" ~/.password-store -vvv
+
+rm -r ~/.config/espanso -vvv ; ln -fs "`pwd`/../dotfiles/.config/espanso" ~/.config/espanso -vvv
+
+# < symlinks
+
+# > configurations
+
+## > gnupg
+
+gpg --output "`pwd`/../credentials/t.key" --decrypt --no-symkey-cache "`pwd`/../credentials/key" # Type the 4 passphrases to UNLOCK the GPG private key
+gpg --output "`pwd`/../credentials/rt.key" --decrypt --no-symkey-cache "`pwd`/../credentials/t.key" ; rm "`pwd`/../credentials/t.key" -vvv
+gpg --output "`pwd`/../credentials/ert.key" --decrypt --no-symkey-cache "`pwd`/../credentials/rt.key" ; rm "`pwd`/../credentials/rt.key" -vvv
+gpg --output "`pwd`/../credentials/cert.key" --decrypt --no-symkey-cache "`pwd`/../credentials/ert.key" ; rm "`pwd`/../credentials/ert.key" -vvv
+                                                                        
+# gpg --output "`pwd`/../credentials/t.rev" --decrypt --no-symkey-cache "`pwd`/../credentials/rev" # Type the 4 passphrases to UNLOCK the GPG revocation key
+# gpg --output "`pwd`/../credentials/rt.rev" --decrypt --no-symkey-cache "`pwd`/../credentials/t.rev" ; rm "`pwd`/../credentials/t.rev" -vvv
+# gpg --output "`pwd`/../credentials/ert.rev" --decrypt --no-symkey-cache "`pwd`/../credentials/rt.rev" ; rm "`pwd`/../credentials/rt.rev" -vvv
+# gpg --output "`pwd`/../credentials/cert.rev" --decrypt --no-symkey-cache "`pwd`/../credentials/ert.rev" ; rm "`pwd`/../credentials/ert.rev" -vvv
+
+gpg --import "`pwd`/../credentials/cert.key" ; rm "`pwd`/../credentials/cert.key" -vvv
+
+gpg --edit-key $GPGKEY # Type trust, set the level to 5 and save
+
+## < gnupg
+
+# < configurations
+
