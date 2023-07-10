@@ -1,0 +1,9 @@
+#!/bin/bash -ev
+
+PERSONAL_DIRECTORY=~/Repositories/personal
+
+git clone --bare git@gitlab.com:fabianolothor/memory-dome.git $PERSONAL_DIRECTORY/memory-dome/.git
+git clone --bare git@gitlab.com:fabianolothor/private-dotfiles.git $PERSONAL_DIRECTORY/private-dotfiles/.git
+git clone --bare git@gitlab.com:fabianolothor/public-dotfiles.git $PERSONAL_DIRECTORY/public-dotfiles/.git
+git clone --bare git@gitlab.com:fabianolothor/www.git $PERSONAL_DIRECTORY/www/.git
+

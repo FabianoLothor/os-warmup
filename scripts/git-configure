@@ -1,0 +1,23 @@
+#!/bin/bash -ev
+
+# > todos
+
+# Configure aliases
+# Configure global configurations
+# Configure to sign commits
+
+# < todos
+
+PERSONAL_DIRECTORY=~/Repositories/personal
+
+git_configure_bare_repository() {
+    git -C $0 config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+    git -C $0 fetch
+}
+
+git_configure_bare_repository $PERSONAL_DIRECTORY/memory-dome
+git_configure_bare_repository $PERSONAL_DIRECTORY/os-warmup
+git_configure_bare_repository $PERSONAL_DIRECTORY/private-dotfiles
+git_configure_bare_repository $PERSONAL_DIRECTORY/public-dotfiles
+git_configure_bare_repository $PERSONAL_DIRECTORY/www
+
