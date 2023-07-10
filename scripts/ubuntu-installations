@@ -1,0 +1,11 @@
+#!/bin/bash -ev
+
+sudo apt -y update ; sudo apt -y upgrade
+
+sudo apt install -y \
+    curl \
+    fonts-firacode \
+    git-gui gpg \
+    pass \
+    tmux \
+
