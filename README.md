@@ -8,8 +8,8 @@ that I am used to use.
 Just execute the following commands:
 
 ```bash
-SUDO="$(sudo --version >/dev/null 2>&1 && echo 'sudo' || echo '')"
 PERSONAL_DIRECTORY=~/Repositories/personal
+SUDO="$(sudo --version >/dev/null 2>&1 && echo 'sudo' || echo '')"
 
 $SUDO apt -y update ; $SUDO apt -y upgrade
 
