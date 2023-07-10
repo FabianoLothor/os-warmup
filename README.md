@@ -8,11 +8,12 @@ that I am used to use.
 Just execute the following commands:
 
 ```bash
-sudo apt update -y ; sudo apt upgrade -y
-
-sudo apt install git
-
+SUDO="$(sudo --version >/dev/null 2>&1 && echo 'sudo' || echo '')"
 PERSONAL_DIRECTORY=~/Repositories/personal
+
+$SUDO apt -y update ; $SUDO apt -y upgrade
+
+$SUDO apt -y install git
 
 git clone --bare \
     https://gitlab.com/fabianolothor/os-warmup.git \

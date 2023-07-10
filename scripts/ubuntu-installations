@@ -1,11 +1,14 @@
 #!/bin/bash -ev
 
-sudo apt -y update ; sudo apt -y upgrade
+SUDO="$(sudo --version >/dev/null 2>&1 && echo 'sudo' || echo '')"
 
-sudo apt install -y \
+$SUDO apt -y update ; $SUDO apt -y upgrade
+
+$SUDO apt -y install \
     curl \
     fonts-firacode \
     git-gui gpg \
     pass \
+    sudo \
     tmux \
 
