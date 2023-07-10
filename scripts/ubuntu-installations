@@ -1,5 +1,6 @@
 #!/bin/bash -ev
 
+DEBIAN_FRONTEND=noninteractive
 SUDO="$(sudo --version >/dev/null 2>&1 && echo 'sudo' || echo '')"
 
 $SUDO apt -y update ; $SUDO apt -y upgrade
