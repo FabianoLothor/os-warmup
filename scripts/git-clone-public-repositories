@@ -9,7 +9,7 @@ PERSONAL_DIRECTORY=~/Repositories/personal
 fl_git_clone_bare_repository https://gitlab.com/fabianolothor/public-dotfiles.git $PERSONAL_DIRECTORY/public-dotfiles
 
 ln -fs "$CURRENT_DIRECTORY/../../../public-dotfiles/main/.bash_profile" ~/.bash_profile -vvv
-. ~/.bashrc
+. ~/.bash_profile
 
 . $CURRENT_DIRECTORY/gpg-import-key
 
