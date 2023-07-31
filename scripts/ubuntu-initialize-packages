@@ -1,0 +1,7 @@
+#!/bin/bash -ev
+
+# > gpg
+
+gpg-agent --daemon -vvv
+
+# < gpg

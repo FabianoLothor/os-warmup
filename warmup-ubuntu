@@ -4,6 +4,7 @@ CURRENT_DIRECTORY=`dirname -- $(readlink -f -- $BASH_SOURCE)`
 SCRIPTS_DIRECTORY=$CURRENT_DIRECTORY/scripts
 
 . $SCRIPTS_DIRECTORY/ubuntu-install-packages
+. $SCRIPTS_DIRECTORY/ubuntu-initialize-packages
 
 . $SCRIPTS_DIRECTORY/git-load-utility-functions
 . $SCRIPTS_DIRECTORY/git-clone-public-repositories
