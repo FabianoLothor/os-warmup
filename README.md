@@ -25,7 +25,7 @@ git clone --bare \
 git -C $PERSONAL_DIRECTORY/os-warmup config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 git -C $PERSONAL_DIRECTORY/os-warmup fetch
 
-git -C $PERSONAL_DIRECTORY/os-warmup worktree add ../main -b main FETCH_HEAD
+git -C $PERSONAL_DIRECTORY/os-warmup worktree add main -B main FETCH_HEAD
 
 $PERSONAL_DIRECTORY/os-warmup/main/warmup-ubuntu
 ```
