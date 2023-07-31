@@ -1,6 +1,7 @@
 #!/bin/bash -ev
 
-CURRENT_DIRECTORY=`dirname $(realpath $0)`
+
+CURRENT_DIRECTORY=`dirname -- $(readlink -f -- $BASH_SOURCE)`
 PERSONAL_DIRECTORY=~/Repositories/personal
 
 # > public-dotfiles
