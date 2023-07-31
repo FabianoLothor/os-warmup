@@ -8,5 +8,6 @@ fl_git_clone_bare_repository() {
 fl_git_configure_bare_repository() {
     git -C $1 config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
     git -C $1 fetch
+    git -C $1 worktree add ./main -b main FETCH_HEAD
 }
 
