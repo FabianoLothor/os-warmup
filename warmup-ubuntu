@@ -1,6 +1,6 @@
 #!/bin/bash -ev
 
-CURRENT_DIRECTORY=`dirname $(realpath $0)`
+CCURRENT_DIRECTORY=`dirname -- $(readlink -f -- $BASH_SOURCE)`
 SCRIPTS_DIRECTORY=$CURRENT_DIRECTORY/scripts
 
 . $SCRIPTS_DIRECTORY/ubuntu-install-packages
