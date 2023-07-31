@@ -6,12 +6,11 @@ $SUDO apt -y update ; $SUDO apt -y upgrade
 
 $SUDO apt -y install \
     curl \
-    fonts-firacode \
+    findutils fonts-firacode \
     git-gui gpg \
     jq \
     parallel pass \
     sudo \
     tmux \
-    vim \
-    xargs
+    vim
 
