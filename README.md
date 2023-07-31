@@ -8,7 +8,7 @@ that I am used to use.
 Just execute the following commands:
 
 ```bash
-# For a smoke test:
+# To run smoke tests:
     # docker pull ubuntu:latest ; docker run -ti --rm ubuntu /bin/bash
 
 PERSONAL_DIRECTORY=~/Repositories/personal
