@@ -1,12 +1,13 @@
 #!/bin/bash -ev
 
-
 CURRENT_DIRECTORY=`dirname -- $(readlink -f -- $BASH_SOURCE)`
 PERSONAL_DIRECTORY=~/Repositories/personal
 
 # > public-dotfiles
 
 fl_git_clone_bare_repository https://gitlab.com/fabianolothor/public-dotfiles.git $PERSONAL_DIRECTORY/public-dotfiles
+
+gpg-agent --daemon -vvv
 
 ln -fs "$CURRENT_DIRECTORY/../../../public-dotfiles/main/.bash_profile" ~/.bash_profile -vvv
 ln -fs "$CURRENT_DIRECTORY/../../../public-dotfiles/main/.gnupg/gpg-agent.conf" ~/.gnupg/gpg-agent.conf -vvv
