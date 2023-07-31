@@ -8,9 +8,6 @@ that I am used to use.
 Just execute the following commands:
 
 ```bash
-# To run smoke tests:
-    # docker pull ubuntu:latest ; docker run -ti --rm ubuntu /bin/bash
-
 PERSONAL_DIRECTORY=~/Repositories/personal
 SUDO="$(sudo --version >/dev/null 2>&1 && echo 'sudo' || echo '')"
 
@@ -28,5 +25,8 @@ git -C $PERSONAL_DIRECTORY/os-warmup fetch
 git -C $PERSONAL_DIRECTORY/os-warmup worktree add main -B main FETCH_HEAD
 
 $PERSONAL_DIRECTORY/os-warmup/main/warmup-ubuntu
+
+# To run smoke tests you can use docker:
+docker pull ubuntu:latest ; docker run -ti --rm ubuntu /bin/bash
 ```
 
